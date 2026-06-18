@@ -1,0 +1,70 @@
+\documentclass[12pt,a4paper]{article}
+
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Spanish localization can be enabled if the language files are installed.
+% If you have problems with 'spanish' in babel, change to 'english' or install the
+% appropriate babel language pack.
+\usepackage[english]{babel}
+
+% Page layout
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+
+% Math and symbols
+\usepackage{amsmath,amssymb}
+
+% Links
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Allow monospace text in captions and listings
+\usepackage{upquote}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuración de listings para código C++
+\lstset{
+        basicstyle=\ttfamily\small,
+        breaklines=true,
+        numbers=left,
+        numberstyle=\tiny,    
+        frame=single,
+        showstringspaces=false,
+        keywordstyle=\color{blue},
+        commentstyle=\color{gray},
+        stringstyle=\color{red}
+}
+
+\begin{document}
+
+
+\title{Memoria QFotoPaint6}
+
+\author{José Luis García Valverde - jl.garciavalverde@um.es - 1.1 - 49309752Y\\
+        Eric Montalbán Atencia - eric.m.a@um.es - 1.3 - 49309721X\\}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\input{introduccion.tex}
+\input{diseno.tex}
+\input{soluciones.tex}
+\input{listado_codigo.tex}
+\input{pruebas.tex}
+\input{conclusiones.tex}
+
+\end{document}

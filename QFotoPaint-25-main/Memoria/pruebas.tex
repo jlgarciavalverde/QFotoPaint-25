@@ -1,0 +1,32 @@
+\section{Pruebas y ejemplos de uso}
+
+Se muestran a continuación ejemplos de uso de las funcionalidades implementadas y pequeñas pruebas realizadas.
+
+\subsection{Copiar al portapapeles / Nueva desde el portapapeles}
+
+Procedimiento de prueba:
+\begin{enumerate}
+\item Abrir una imagen en QFotoPaint6 (Menú Archivo $\to$ Abrir).
+\item Seleccionar una región con la herramienta de selección (Menú Edición $\to$ Seleccionar).
+\item Ejecutar "Copiar al portapapeles" (Menú Edición $\to$ Copiar al portapapeles).
+\item Abrir Paint u otra aplicación y pegar (Ctrl+V). Comprobar que la imagen aparece con el contenido de la ROI.
+\item En QFotoPaint6 ejecutar "Nueva desde el portapapeles" (Menú Archivo $\to$ Nueva desde el portapapeles) para verificar que se abre una nueva ventana con la imagen del portapapeles.
+\end{enumerate}
+
+\subsection{Ver información}
+
+Prueba rápida:
+\begin{itemize}
+\item Abrir una imagen y ejecutar "Ver información" (Menú Edición $\to$ Ver información...).
+\item Comprobar que el cuadro resultante contiene: tamaño, profundidad, canales, tamaño en memoria, (opcional) tamaño en disco y color medio con recuadro de color.
+\end{itemize}
+
+\subsection{Ejemplo: generación de vídeo rotando una imagen}
+
+Comprobación funcional básica:
+\begin{enumerate}
+\item Abrir una imagen y ejecutar la opción correspondiente en el menú Vídeo (Imagen a Vídeo $\to$ Rotar imagen).
+\item Ver en pantalla la previsualización y comprobar que se crea el fichero de salida si se solicitó guardar.
+\end{enumerate}
+
+Incluye en la memoria capturas de pantalla de las pruebas realizadas para facilitar la evaluación.

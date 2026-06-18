@@ -1,0 +1,27 @@
+\section{Resolución de los problemas más relevantes}
+
+En esta sección se describen los problemas más relevantes encontrados durante el desarrollo y cómo se han resuelto.
+
+\subsection{Conversión entre \texttt{cv::Mat} y \texttt{QImage}}
+
+Problema: OpenCV usa matrices en orden BGR/BGRA y Qt espera RGB/RGBA en ciertos formatos; además la memoria subyacente puede ser gestionada por OpenCV, lo que puede provocar accesos a memoria liberada si no se copian los datos.
+
+Solución: Antes de crear un \texttt{QImage} se convierte el orden de canales (p. ej. \texttt{COLOR\_BGR2RGB} o \texttt{COLOR\_BGRA2RGBA}) y se realiza una copia con \texttt{QImage::copy()} cuando se va a transferir al portapapeles o a Qt para garantizar la propiedad de los datos.
+
+\subsection{Gestión de múltiples ventanas}
+
+Problema: controlar el foco y el orden de múltiples ventanas creadas con HighGUI de OpenCV.
+
+Solución: se utiliza el array global \texttt{foto[]} con un campo \texttt{orden} que se incrementa cada vez que una ventana obtiene foco; la función \texttt{foto\_activa()} devuelve la ventana con mayor orden.
+
+\subsection{Captura de cámara y sincronización}
+
+Problema: capturar frames desde la cámara y permitir operaciones como acumulado de media sin bloquear la interfaz.
+
+Solución: el módulo \texttt{video.cpp} encapsula la lógica de captura con \texttt{VideoCapture}. Las funciones devuelven controles sencillos (por ejemplo, número de ms entre frames) y se usan ventanas de OpenCV para previsualizar; las operaciones de procesado (media, rotación, exportación) se realizan en funciones separadas para evitar entrelazar la lógica de captura y la de procesamiento.
+
+\subsection{Compatibilidad de formatos al copiar al portapapeles}
+
+Problema: el portapapeles del sistema puede requerir diferentes formatos según la aplicación destino.
+
+Solución: se soportan conversiones para imágenes de 1, 3 y 4 canales y se colocan en el portapapeles como \texttt{QImage}; en Windows esto permite pegar en Paint y otras aplicaciones que aceptan imágenes.

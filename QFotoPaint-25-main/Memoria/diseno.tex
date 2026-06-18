@@ -1,0 +1,23 @@
+\section{Diseño de la aplicación}
+
+Esta sección describe el diseño general de la aplicación QFotoPaint6.
+
+\subsection{Arquitectura}
+
+- \textbf{Interfaz gráfica:} implementada con Qt (widgets y acciones en \texttt{mainwindow.*}).
+- \textbf{Procesamiento de imagen:} funciones agrupadas en el módulo \texttt{imagenes.h/cpp}, usando OpenCV para operaciones sobre \texttt{cv::Mat}.
+- \textbf{Vídeo y captura:} funcionalidades específicas en \texttt{video.h/cpp} que usan OpenCV (\texttt{VideoCapture}, \texttt{VideoWriter}).
+- \textbf{Comunicación Qt / OpenCV:} conversiones entre \texttt{cv::Mat} y \texttt{QImage} para integrar con la API de Qt (por ejemplo para el portapapeles y visualización).
+
+\subsection{Organización del código}
+
+- Ficheros principales de UI: \texttt{mainwindow.cpp/.h} y el recurso \texttt{recursos.qrc}.
+- Funcionalidades de imagen: \texttt{imagenes.h} (interfaz) y \texttt{imagenes.cpp} (implementación).
+- Funcionalidades de vídeo/cámara: \texttt{video.h} y \texttt{video.cpp}.
+- Ventanas de diálogo y utilidades: ficheros como \texttt{dialognueva.*}, \texttt{capturarvideo.*}, etc.
+
+\subsection{Decisiones de diseño relevantes}
+
+- Se mantiene un array estático \texttt{foto[MAX\_VENTANAS]} para gestionar las ventanas/imagenes abiertas, simplificando el control y la numeración de ventanas.
+- Para integrar con Qt y el portapapeles se realizan conversiones controladas a \texttt{QImage} copiando los datos cuando es necesario para evitar problemas de propiedad de memoria.
+- Se emplean callbacks de OpenCV (HighGUI) para manejar eventos de ratón sobre las ventanas de imagen, lo que mantiene la lógica de interacción separada de la GUI de Qt.
